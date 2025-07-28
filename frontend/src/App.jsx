@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import NoteDetailsPage from './pages/NoteDetailsPage'
 import CreatePage from './pages/CreatePage'
-import Navbar from './layout/navbar'
+import Navbar from './layout/Navbar'
 function App() {
 
   return (
