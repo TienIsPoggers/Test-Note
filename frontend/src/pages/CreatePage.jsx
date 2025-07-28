@@ -14,8 +14,9 @@ const CreatePage = () => {
       return;
     }
     setLoading(true);
+    const baseURL = import.meta.env.MODE === 'development' ? 'http://localhost:5001/api' : '/api'
     try{  
-      await fetch("http://localhost:5001/api/notes",{
+      await fetch(`${baseURL}/notes`,{
         method:"POST",
         headers:{
           'Content-Type':"application/json",

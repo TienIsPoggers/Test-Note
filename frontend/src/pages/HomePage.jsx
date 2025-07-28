@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
     const [loading,setLoading] = useState(true);
     const [notes,setNotes] = useState([]);
-
     useEffect(() => {
         const fetchNotes = async () => {
             setLoading(true);
+            const baseURL = import.meta.env.MODE === 'development' ? 'http://localhost:5001/api' : '/api'
             try{
-                const res = await fetch("http://localhost:5001/api/notes");
+                const res = await fetch(`${baseURL}/notes`);
                 const data = await res.json();
                 setNotes(data);
             }catch(err){

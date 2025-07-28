@@ -11,8 +11,9 @@ const NoteDetailsPage = () => {
   useEffect(() => {
     const fetchNoteById = async () => {
       setLoading(true)
+      const baseURL = import.meta.env.MODE === 'development' ? 'http://localhost:5001/api' : '/api'
       try{
-        const res = await fetch(`http://localhost:5001/api/notes/${id}`)
+        const res = await fetch(`${baseURL}/notes/${id}`)
         const data = await res.json();
         setTitle(data.title);
         setContent(data.content);
@@ -31,8 +32,9 @@ const NoteDetailsPage = () => {
       return;
     }
     setLoading(true);
+    const baseURL = import.meta.env.MODE === 'development' ? 'http://localhost:5001/api' : '/api'
     try{  
-      await fetch(`http://localhost:5001/api/notes/${id}`,{
+      await fetch(`${baseURL}/notes/${id}`,{
         method:"PUT",
         headers:{
           'Content-Type':"application/json",
@@ -49,8 +51,9 @@ const NoteDetailsPage = () => {
   const handleDeleteNote = async () => {
 
     setLoadingDelete(true);
+    const baseURL = import.meta.env.MODE === 'development' ? 'http://localhost:5001/api' : '/api'
     try{
-      await fetch(`http://localhost:5001/api/notes/${id}`,{
+      await fetch(`${baseURL}/notes/${id}`,{
         method:"DELETE"
       })
       toast.success("Succuess to delete Note for server");
